@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#090b20" />
+  <meta name="description" content="Mot tam thiep sinh nhat hoat hinh danh rieng cho Ngoc Han." />
+  <title>Happy Birthday, Ngoc Han ✨</title>
+  <style>
+    :root {
+      --night: #090b20;
+      --night-2: #171332;
+      --gold: #ffd993;
+      --gold-light: #fff1c9;
+      --pink: #ff8fab;
+      --lavender: #b9a6ff;
+      --text: #fffaf4;
+      --muted: #d4cee7;
+      --glass: rgba(255,255,255,.075);
+      --glass-border: rgba(255,255,255,.17);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(ellipse at 50% -10%, rgba(133, 91, 190, .42), transparent 48%),
+        radial-gradient(ellipse at 0% 60%, rgba(83, 47, 139, .20), transparent 36%),
+        radial-gradient(ellipse at 100% 42%, rgba(171, 73, 119, .17), transparent 32%),
+        linear-gradient(155deg, var(--night), var(--night-2) 58%, #080d20);
+      overflow-x: hidden;
+    }
+
+    button, input { font: inherit; }
+    button { -webkit-tap-highlight-color: transparent; }
+    button:focus-visible, input:focus-visible { outline: 2px solid var(--gold); outline-offset: 4px; }
+
+    .sky, .sky::before, .sky::after { position: fixed; inset: 0; pointer-events: none; }
+    .sky { z-index: 0; overflow: hidden; }
+    .sky::before {
+      content: "";
+      opacity: .48;
+      background-image:
+        radial-gradient(1px 1px at 8% 19%, #fff 99%, transparent),
+        radial-gradient(1px 1px at 22% 76%, #fff 99%, transparent),
+        radial-gradient(2px 2px at 41% 24%, #ffe7b8 99%, transparent),
+        radial-gradient(1px 1px at 67% 12%, #fff 99%, transparent),
+        radial-gradient(1px 1px at 82% 64%, #fff 99%, transparent),
+        radial-gradient(2px 2px at 92% 29%, #ffe7b8 99%, transparent),
+        radial-gradient(1px 1px at 58% 87%, #fff 99%, transparent),
+        radial-gradient(1px 1px at 13% 49%, #fff 99%, transparent);
+      background-size: 370px 300px;
+      animation: starDrift 38s linear infinite;
+    }
+    .sky::after {
+      content: "";
+      width: 60vw; height: 90vh; inset: -25vh 20vw auto;
+      margin: auto;
+      background: linear-gradient(180deg, transparent, rgba(246, 190, 255, .045), transparent);
+      transform: rotate(23deg);
+      filter: blur(24px);
+    }
+
+    .page-shell { position: relative; z-index: 1; width: min(1120px, 100%); margin: 0 auto; padding: 22px 22px 40px; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin: 0 auto 28px; }
+    .brand { display: flex; align-items: center; gap: 10px; color: #f8e6bc; font-size: .76rem; letter-spacing: .22em; text-transform: uppercase; }
+    .brand-mark { display: grid; place-items: center; width: 32px; height: 32px; border: 1px solid rgba(255,217,147,.48); border-radius: 50%; box-shadow: 0 0 22px rgba(255,217,147,.16); }
+    .top-note { color: rgba(255,250,244,.58); font-size: .76rem; letter-spacing: .12em; text-transform: uppercase; }
+
+    .hero { position: relative; min-height: 600px; display: grid; grid-template-columns: 1.06fr .94fr; align-items: center; gap: 30px; padding: 34px 0 48px; }
+    .hero::before { content: ""; position: absolute; width: min(680px, 95vw); height: min(680px, 95vw); top: -25px; left: 50%; transform: translateX(-50%); border-radius: 50%; border: 1px solid rgba(255,228,180,.09); box-shadow: 0 0 0 38px rgba(255,255,255,.012), 0 0 0 82px rgba(255,255,255,.009); pointer-events: none; }
+    .hero-copy { position: relative; z-index: 2; padding: 30px 0; animation: fadeUp 1.2s .1s both; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; color: var(--gold); font-size: .77rem; letter-spacing: .24em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 34px; height: 1px; background: var(--gold); box-shadow: 0 0 10px var(--gold); }
+    h1 { margin: 24px 0 6px; font-family: Georgia, "Times New Roman", serif; font-size: clamp(3.2rem, 7.5vw, 6.55rem); font-weight: 400; line-height: .91; letter-spacing: -.055em; }
+    h1 .happy { display: block; color: var(--gold-light); text-shadow: 0 0 34px rgba(255,217,147,.15); }
+    h1 .birthday { display: block; font-style: italic; color: #e7d9ff; margin-top: 8px; }
+    .recipient { margin: 22px 0 16px; color: var(--gold); font-size: clamp(1.1rem, 2.1vw, 1.5rem); font-weight: 650; letter-spacing: .19em; overflow-wrap: anywhere; }
+    .message { max-width: 500px; margin: 0; color: var(--muted); font-family: Georgia, "Times New Roman", serif; font-size: clamp(1.1rem, 1.9vw, 1.35rem); line-height: 1.65; }
+    .signature { margin-top: 22px; color: rgba(255,250,244,.7); font-size: .78rem; letter-spacing: .15em; text-transform: uppercase; }
+    .signature strong { display: block; margin-top: 8px; color: var(--gold-light); font-family: Georgia, serif; font-size: 1.45rem; font-weight: 400; letter-spacing: .04em; text-transform: none; }
+
+    .hero-art { position: relative; display: grid; min-height: 440px; place-items: center; isolation: isolate; animation: fadeUp 1.35s .24s both; }
+    .halo { position: absolute; width: min(410px, 85vw); aspect-ratio: 1; border-radius: 50%; border: 1px solid rgba(255,221,161,.2); box-shadow: inset 0 0 65px rgba(192,136,255,.07), 0 0 70px rgba(236,166,255,.07); animation: haloPulse 5s ease-in-out infinite; }
+    .halo::before, .halo::after { content: ""; position: absolute; inset: 20px; border: 1px dashed rgba(255,220,165,.24); border-radius: 50%; animation: spin 35s linear infinite; }
+    .halo::after { inset: 42px; border-style: solid; border-color: rgba(220,193,255,.13); animation-duration: 50s; animation-direction: reverse; }
+    .moon { position: absolute; top: 7%; right: 12%; width: 48px; height: 48px; border-radius: 50%; background: var(--gold-light); box-shadow: 0 0 20px #ffdc9a, 0 0 70px rgba(255,220,154,.38); }
+    .moon::after { content: ""; position: absolute; width: 46px; height: 46px; top: -7px; left: 13px; border-radius: 50%; background: #171332; }
+    .orbit-star { position: absolute; color: #fff2cc; font-size: 1.6rem; text-shadow: 0 0 24px var(--gold); animation: twinkle 2.4s ease-in-out infinite; }
+    .star-a { left: 11%; top: 26%; } .star-b { right: 11%; bottom: 24%; animation-delay: .7s; font-size: 1.1rem; } .star-c { left: 18%; bottom: 16%; animation-delay: 1.1s; font-size: .95rem; }
+
+    .cake-wrap { position: relative; display: grid; place-items: center; width: 290px; height: 310px; transform: translateY(22px); }
+    .cake-shadow { position: absolute; bottom: 16px; width: 255px; height: 24px; border-radius: 50%; background: rgba(2,3,14,.55); filter: blur(9px); }
+    .cake { position: relative; width: 230px; height: 220px; cursor: pointer; outline: none; filter: drop-shadow(0 22px 22px rgba(0,0,0,.18)); animation: cakeFloat 4s ease-in-out infinite; }
+    .cake-top { position: absolute; z-index: 5; top: 64px; left: 22px; width: 186px; height: 45px; border-radius: 50%; background: linear-gradient(180deg, #fff0ce, #e7a5c5); box-shadow: inset 0 5px 0 rgba(255,255,255,.55); }
+    .cake-icing { position: absolute; z-index: 4; top: 82px; left: 22px; width: 186px; height: 36px; border-radius: 0 0 18px 18px; background: #f3c0d4; }
+    .cake-icing::before { content: ""; position: absolute; left: 0; right: 0; top: -2px; height: 22px; background: #f8dbe5; border-radius: 0 0 50% 50%; }
+    .drip { position: absolute; z-index: 6; top: 91px; width: 17px; height: 30px; background: #f8dbe5; border-radius: 0 0 10px 10px; }
+    .drip.d1 { left: 47px; height: 28px; } .drip.d2 { left: 92px; height: 37px; } .drip.d3 { left: 145px; height: 25px; } .drip.d4 { left: 178px; height: 32px; }
+    .cake-middle { position: absolute; z-index: 3; left: 22px; top: 105px; width: 186px; height: 66px; border-radius: 0 0 14px 14px; background: linear-gradient(90deg, #bd648b, #e995b6 48%, #bd648b); border-bottom: 7px solid #8d4c83; }
+    .cake-middle::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 11px; background: rgba(255,226,229,.45); }
+    .cake-bottom { position: absolute; z-index: 2; left: 5px; top: 164px; width: 220px; height: 41px; border-radius: 0 0 18px 18px; background: linear-gradient(90deg, #8e5aaf, #c18bd4 48%, #8e5aaf); border-bottom: 7px solid #634181; }
+    .cake-bottom::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 10px; background: rgba(255,238,245,.42); }
+    .candle { position: absolute; z-index: 8; top: 22px; left: 106px; width: 17px; height: 49px; border-radius: 5px 5px 2px 2px; background: repeating-linear-gradient(135deg, #fff4dc 0 6px, #de7caa 6px 11px); box-shadow: 0 0 0 1px rgba(255,255,255,.35); }
+    .flame { position: absolute; left: 3px; top: -27px; width: 12px; height: 22px; border-radius: 70% 35% 65% 35%; transform: rotate(45deg); background: radial-gradient(circle at 65% 65%, #fffbd8 0 13%, #ffcf70 37%, #ff8c55 75%); box-shadow: 0 0 13px 5px rgba(255,190,92,.42); transform-origin: 50% 85%; animation: flameFlicker .65s ease-in-out infinite alternate; }
+    .flame.out { opacity: 0; transform: translateY(-18px) scale(.3) rotate(30deg); transition: .35s ease; }
+    .cake-pearls { position: absolute; z-index: 7; top: 123px; left: 41px; width: 150px; display: flex; justify-content: space-between; }
+    .cake-pearls i { width: 6px; height: 6px; border-radius: 50%; background: #ffdf9a; box-shadow: 0 0 9px rgba(255,220,154,.65); }
+    .cake-heart { position: absolute; z-index: 8; top: 136px; left: 105px; color: #fff2d7; font-size: 1.25rem; text-shadow: 0 0 10px rgba(255,243,215,.7); }
+    .cake-instruction { position: absolute; bottom: -16px; left: 0; right: 0; text-align: center; color: rgba(255,250,244,.56); font-size: .72rem; letter-spacing: .13em; text-transform: uppercase; }
+
+    .controls { display: flex; flex-wrap: wrap; gap: 11px; align-items: center; margin-top: 28px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 47px; padding: 12px 17px; border-radius: 999px; border: 1px solid var(--glass-border); color: var(--text); background: var(--glass); backdrop-filter: blur(14px); cursor: pointer; transition: transform .2s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease; }
+    .btn:hover { transform: translateY(-2px); border-color: rgba(255,217,147,.62); background: rgba(255,255,255,.11); }
+    .btn-primary { color: #28172b; font-weight: 750; border-color: transparent; background: linear-gradient(110deg, #ffe7ad, #ffb9cb); box-shadow: 0 8px 30px rgba(255,171,193,.18); }
+    .btn-primary:hover { background: linear-gradient(110deg, #fff1c9, #ffc9d7); box-shadow: 0 10px 36px rgba(255,171,193,.28); }
+    .btn .symbol { font-size: 1.05rem; }
+    .music-panel { display: inline-flex; align-items: center; gap: 10px; padding: 8px 12px; border: 1px solid rgba(255,255,255,.13); border-radius: 999px; background: rgba(7,8,28,.34); color: rgba(255,250,244,.72); }
+    .music-panel label { font-size: .75rem; white-space: nowrap; }
+    .music-panel input { width: 76px; accent-color: var(--gold); cursor: pointer; }
+    .status { min-height: 20px; margin-top: 10px; color: rgba(255,250,244,.6); font-size: .78rem; }
+
+    .editor-panel { position: relative; z-index: 3; margin: 0 auto 24px; border: 1px solid rgba(255,217,147,.32); border-radius: 18px; background: rgba(10,10,32,.82); box-shadow: 0 18px 50px rgba(0,0,0,.2); backdrop-filter: blur(14px); }
+    .editor-panel summary { cursor: pointer; padding: 15px 18px; color: var(--gold-light); font-weight: 650; letter-spacing: .02em; list-style-position: inside; }
+    .editor-content { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; padding: 4px 18px 18px; }
+    .editor-field { display: flex; flex-direction: column; gap: 7px; min-width: 0; }
+    .editor-field label { color: var(--muted); font-size: .82rem; }
+    .editor-field input, .editor-field textarea { width: 100%; border: 1px solid rgba(255,255,255,.18); border-radius: 10px; padding: 11px 12px; color: var(--text); background: rgba(255,255,255,.07); outline-offset: 2px; }
+    .editor-field textarea { min-height: 94px; resize: vertical; line-height: 1.55; }
+    .editor-actions { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+    .editor-help { grid-column: 1 / -1; margin: 0; color: rgba(255,250,244,.58); font-size: .78rem; line-height: 1.55; }
+    @media (max-width: 620px) { .editor-content { grid-template-columns: 1fr; } .editor-actions, .editor-help { grid-column: 1; } }
+
+    .divider { display: flex; align-items: center; justify-content: center; gap: 15px; margin: 8px 0 36px; color: rgba(255,222,169,.72); font-family: Georgia, serif; font-style: italic; }
+    .divider::before, .divider::after { content: ""; width: min(100px, 18vw); height: 1px; background: linear-gradient(90deg, transparent, rgba(255,217,147,.48)); }
+    .divider::after { transform: rotate(180deg); }
+    .wish-card { position: relative; overflow: hidden; max-width: 850px; margin: 0 auto; padding: 35px clamp(20px, 5vw, 52px) 36px; border: 1px solid var(--glass-border); border-radius: 24px; background: linear-gradient(135deg, rgba(255,255,255,.085), rgba(255,255,255,.025)); box-shadow: 0 25px 70px rgba(0,0,0,.16); text-align: center; animation: fadeUp 1.2s .6s both; }
+    .wish-card::before { content: "✦"; position: absolute; top: -28px; right: 25px; color: rgba(255,217,147,.16); font-size: 9rem; }
+    .wish-label { color: var(--gold); font-size: .72rem; letter-spacing: .25em; text-transform: uppercase; }
+    .wish-card h2 { position: relative; margin: 14px 0; font-family: Georgia, serif; font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 400; }
+    .wish-card p { position: relative; max-width: 650px; margin: 0 auto; color: var(--muted); font-size: 1rem; line-height: 1.85; }
+    .closing { margin: 35px 0 0; text-align: center; color: rgba(255,250,244,.54); font-size: .72rem; letter-spacing: .17em; text-transform: uppercase; }
+    .closing span { display: block; margin-top: 10px; color: var(--gold-light); font-family: Georgia, serif; font-size: 1.5rem; font-style: italic; letter-spacing: .03em; text-transform: none; }
+    .small-print { text-align: center; margin-top: 22px; color: rgba(255,250,244,.34); font-size: .68rem; }
+
+    #confetti { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 10; pointer-events: none; }
+    .shooting-star { position: fixed; z-index: 0; top: 13%; left: -15%; width: 130px; height: 1px; transform: rotate(-22deg); background: linear-gradient(90deg, transparent, rgba(255,239,199,.85), transparent); filter: drop-shadow(0 0 5px #ffd993); animation: shooting 9s 2s ease-in infinite; pointer-events: none; }
+    .float-heart { position: fixed; z-index: 0; bottom: -30px; color: rgba(255,143,171,.5); font-size: 16px; animation: floatHeart 12s linear infinite; pointer-events: none; }
+    .float-heart.h2 { left: 76%; animation-delay: 4s; animation-duration: 14s; font-size: 12px; }
+    .float-heart.h3 { left: 20%; animation-delay: 7s; animation-duration: 16s; font-size: 19px; }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes starDrift { from { transform: translateY(0); } to { transform: translateY(300px); } }
+    @keyframes haloPulse { 0%,100% { transform: scale(.98); opacity: .82; } 50% { transform: scale(1.025); opacity: 1; } }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes twinkle { 0%,100% { opacity: .42; transform: scale(.8) rotate(0); } 50% { opacity: 1; transform: scale(1.12) rotate(12deg); } }
+    @keyframes cakeFloat { 0%,100% { transform: translateY(22px); } 50% { transform: translateY(12px); } }
+    @keyframes flameFlicker { from { transform: rotate(40deg) scale(.94); } to { transform: rotate(50deg) scale(1.06); } }
+    @keyframes shooting { 0% { left: -18%; opacity: 0; } 5% { opacity: .9; } 17% { left: 115%; opacity: 0; } 100% { left: 115%; opacity: 0; } }
+    @keyframes floatHeart { from { transform: translateY(0) rotate(0); opacity: 0; } 12% { opacity: .55; } 88% { opacity: .35; } to { transform: translateY(-115vh) rotate(35deg); opacity: 0; } }
+    @keyframes popIn { 0% { transform: scale(.6); opacity: 0; } 70% { transform: scale(1.12); opacity: 1; } 100% { transform: scale(1); } }
+
+    @media (max-width: 780px) {
+      .page-shell { padding: 16px 18px 30px; }
+      .topbar { margin-bottom: 8px; }
+      .top-note { display: none; }
+      .hero { grid-template-columns: 1fr; gap: 0; padding: 25px 0 34px; min-height: auto; }
+      .hero-copy { text-align: center; padding: 25px 0 0; }
+      .eyebrow { justify-content: center; }
+      .eyebrow::before { width: 23px; }
+      h1 { font-size: clamp(3rem, 13vw, 5.1rem); margin-top: 20px; }
+      .recipient { margin-top: 17px; }
+      .message { margin: 0 auto; }
+      .signature { margin-top: 15px; }
+      .controls { justify-content: center; }
+      .hero-art { min-height: 365px; margin-top: -2px; }
+      .halo { width: min(335px, 86vw); }
+      .cake-wrap { transform: translateY(8px) scale(.91); }
+      .cake-instruction { bottom: -6px; }
+      .wish-card { padding-top: 29px; }
+    }
+    @media (max-width: 410px) {
+      .brand { font-size: .66rem; letter-spacing: .14em; }
+      .brand-mark { width: 29px; height: 29px; }
+      .controls { gap: 8px; }
+      .btn { padding: 11px 13px; font-size: .88rem; }
+      .music-panel { gap: 7px; }
+      .music-panel input { width: 56px; }
+      .hero-art { min-height: 330px; }
+      .cake-wrap { transform: translateY(0) scale(.82); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="sky" aria-hidden="true"></div>
+  <div class="shooting-star" aria-hidden="true"></div>
+  <div class="float-heart" style="left: 8%;" aria-hidden="true">♡</div>
+  <div class="float-heart h2" aria-hidden="true">✦</div>
+  <div class="float-heart h3" aria-hidden="true">♡</div>
+  <canvas id="confetti" aria-hidden="true"></canvas>
+
+  <main class="page-shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">✦</span><span>MOT DEM DAC BIET</span></div>
+      <div class="top-note">Mot loi chuc danh rieng cho ban</div>
+    </header>
+
+    <details class="editor-panel" id="editor-panel">
+      <summary>✎ Chinh sua loi chuc truc tiep tai day</summary>
+      <div class="editor-content">
+        <div class="editor-field">
+          <label for="edit-recipient">Ten nguoi nhan</label>
+          <input id="edit-recipient" type="text" value="NGOC HAN" maxlength="80" />
+        </div>
+        <div class="editor-field">
+          <label for="edit-sender">Ten nguoi gui</label>
+          <input id="edit-sender" type="text" value="CHUNG MINH" maxlength="100" />
+        </div>
+        <div class="editor-field">
+          <label for="edit-hero-message">Loi chuc ngan (o phan dau thiep)</label>
+          <textarea id="edit-hero-message" maxlength="700">Chuc mung sinh nhat Han! Chuc Han tuoi moi that ruc ro, luon vui ve, binh an va gap nhieu dieu tot dep. Mong moi ngay cua Han deu co niem vui va that nhieu dieu dang nho.</textarea>
+        </div>
+        <div class="editor-field">
+          <label for="edit-long-wish">Loi chuc dai (o khung thu ben duoi)</label>
+          <textarea id="edit-long-wish" maxlength="1800">Chuc mung sinh nhat Ngoc Han! Tuoi moi chuc Han luon manh me, tu tin, vui ve va gap that nhieu may man. Mong nhung dieu Han mong doi se dan tro thanh hien thuc, ben canh luon co nhung nguoi yeu thuong va tran trong Han. Hay cu toa sang theo cach rieng cua minh va luon giu nu cuoi that tuoi nhe. Chuc Han co mot tuoi moi that dang nho! ✨</textarea>
+        </div>
+        <div class="editor-actions">
+          <button class="btn btn-primary" id="apply-editor" type="button">✓ Ap dung loi chuc</button>
+          <button class="btn" id="download-edited-html" type="button">↓ Tai thiep da chinh sua (.html)</button>
+          <button class="btn" id="reset-editor" type="button">↺ Khoi phuc noi dung ban dau</button>
+        </div>
+        <p class="editor-help">Noi dung tren thiep se thay doi ngay khi ban go. Khi da ung y, bam “Tai thiep da chinh sua” de luu thanh file HTML rieng. Muon cap nhat thiep dang dang tren mang, hay tai file moi len thay file index.html cu.</p>
+      </div>
+    </details>
+
+    <section class="hero" aria-labelledby="main-title">
+      <div class="hero-copy">
+        <div class="eyebrow">Ngay dac biet danh rieng cho ban</div>
+        <h1 id="main-title"><span class="happy">Happy</span><span class="birthday">Birthday</span></h1>
+        <p class="recipient" id="recipient-name">NGOC HAN</p>
+        <p class="message" id="hero-message">Chuc mung sinh nhat Han! Chuc Han tuoi moi that ruc ro, luon vui ve, binh an va gap nhieu dieu tot dep. Mong moi ngay cua Han deu co niem vui va that nhieu dieu dang nho.</p>
+        <div class="signature">Gui tu<strong id="sender-name">CHUNG MINH</strong></div>
+
+        <div class="controls">
+          <button class="btn btn-primary" id="music-button" type="button" aria-pressed="false"><span class="symbol" id="music-symbol">♫</span><span id="music-label">Bat nhac Happy Birthday</span></button>
+          <button class="btn" id="wish-button" type="button"><span class="symbol">✧</span> Thoi nen & uoc nguyen</button>
+          <button class="btn" id="fireworks-button" type="button"><span class="symbol">✦</span> Phao hoa</button>
+          <div class="music-panel" aria-label="Dieu chinh am luong nhac">
+            <label for="volume">Am luong</label>
+            <input id="volume" type="range" min="0" max="100" value="55" aria-label="Am luong nhac" />
+          </div>
+        </div>
+        <div class="status" id="status-message" aria-live="polite">Thiep dang thu tu phat nhac Happy Birthday. Neu trinh duyet chan, hay cham vao man hinh mot lan de bat nhac.</div>
+      </div>
+
+      <div class="hero-art" aria-label="Banh sinh nhat hoat hinh duoi anh sao">
+        <div class="halo" aria-hidden="true"></div>
+        <div class="moon" aria-hidden="true"></div>
+        <span class="orbit-star star-a" aria-hidden="true">✧</span>
+        <span class="orbit-star star-b" aria-hidden="true">✦</span>
+        <span class="orbit-star star-c" aria-hidden="true">✧</span>
+        <div class="cake-wrap">
+          <div class="cake-shadow" aria-hidden="true"></div>
+          <div class="cake" aria-hidden="true">
+            <div class="candle"><span class="flame" id="candle-flame"></span></div>
+            <div class="cake-top"></div>
+            <div class="cake-icing"></div>
+            <div class="drip d1"></div><div class="drip d2"></div><div class="drip d3"></div><div class="drip d4"></div>
+            <div class="cake-middle"></div>
+            <div class="cake-bottom"></div>
+            <div class="cake-pearls"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="cake-heart">♥</div>
+          </div>
+          <div class="cake-instruction" id="cake-instruction">Hay uoc mot dieu · Thoi nen</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider" aria-hidden="true">Gui ban bang ca yeu thuong ✧</div>
+
+    <section class="wish-card" aria-labelledby="wish-title">
+      <div class="wish-label">Loi nhan danh rieng cho ban</div>
+      <h2 id="wish-title">Gui Han, nhung dieu tot dep nhat</h2>
+      <p id="long-wish">Chuc mung sinh nhat Ngoc Han! Tuoi moi chuc Han luon manh me, tu tin, vui ve va gap that nhieu may man. Mong nhung dieu Han mong doi se dan tro thanh hien thuc, ben canh luon co nhung nguoi yeu thuong va tran trong Han. Hay cu toa sang theo cach rieng cua minh va luon giu nu cuoi that tuoi nhe. Chuc Han co mot tuoi moi that dang nho! ✨</p>
+    </section>
+
+    <footer class="closing">Dem nay la cua ban<span id="footer-sender">CHUNG MINH gui Han that nhieu yeu thuong ♡</span></footer>
+    <div class="small-print">Mot mon qua nho tren mang, danh rieng cho khoanh khac nay.</div>
+  </main>
+
+  <script>
+    // ============================================================
+    // TUY CHINH NHANH: sua ten va loi chuc trong CONFIG ben duoi.
+    // Giai dieu Happy Birthday duoc tao truc tiep bang Web Audio API,
+    // vi vay khong can tai them file nhac hoac thu vien ben ngoai.
+    // ============================================================
+    const CONFIG = {
+      recipient: "NGOC HAN",
+      sender: "CHUNG MINH",
+      heroMessage: "Chuc mung sinh nhat Han! Chuc Han tuoi moi that ruc ro, luon vui ve, binh an va gap nhieu dieu tot dep. Mong moi ngay cua Han deu co niem vui va that nhieu dieu dang nho.",
+      longWish: "Chuc mung sinh nhat Ngoc Han! Tuoi moi chuc Han luon manh me, tu tin, vui ve va gap that nhieu may man. Mong nhung dieu Han mong doi se dan tro thanh hien thuc, ben canh luon co nhung nguoi yeu thuong va tran trong Han. Hay cu toa sang theo cach rieng cua minh va luon giu nu cuoi that tuoi nhe. Chuc Han co mot tuoi moi that dang nho! ✨"
+    };
+
+    document.title = `Happy Birthday, ${CONFIG.recipient} ✨`;
+    document.getElementById("recipient-name").textContent = CONFIG.recipient;
+    document.getElementById("sender-name").textContent = CONFIG.sender;
+    document.getElementById("hero-message").textContent = CONFIG.heroMessage;
+    document.getElementById("long-wish").textContent = CONFIG.longWish;
+    document.getElementById("footer-sender").textContent = `${CONFIG.sender} gui ${CONFIG.recipient} that nhieu yeu thuong ♡`;
+    document.getElementById("wish-title").textContent = `Gui ${CONFIG.recipient}, nhung dieu tot dep nhat`;
+
+    // --- Trinh chinh sua loi chuc truc tiep tren thiep ---
+    const editFields = {
+      recipient: document.getElementById("edit-recipient"),
+      sender: document.getElementById("edit-sender"),
+      heroMessage: document.getElementById("edit-hero-message"),
+      longWish: document.getElementById("edit-long-wish")
+    };
+    const ORIGINAL_CONFIG = { ...CONFIG };
+
+    function populateEditorFields() {
+      editFields.recipient.value = CONFIG.recipient;
+      editFields.sender.value = CONFIG.sender;
+      editFields.heroMessage.value = CONFIG.heroMessage;
+      editFields.longWish.value = CONFIG.longWish;
+    }
+
+    function refreshGreeting() {
+      CONFIG.recipient = editFields.recipient.value.trim() || "NGOC HAN";
+      CONFIG.sender = editFields.sender.value.trim() || "CHUNG MINH";
+      CONFIG.heroMessage = editFields.heroMessage.value;
+      CONFIG.longWish = editFields.longWish.value;
+      document.title = `Happy Birthday, ${CONFIG.recipient} ✨`;
+      document.getElementById("recipient-name").textContent = CONFIG.recipient;
+      document.getElementById("sender-name").textContent = CONFIG.sender;
+      document.getElementById("hero-message").textContent = CONFIG.heroMessage;
+      document.getElementById("long-wish").textContent = CONFIG.longWish;
+      document.getElementById("footer-sender").textContent = `${CONFIG.sender} gui ${CONFIG.recipient} that nhieu yeu thuong ♡`;
+      document.getElementById("wish-title").textContent = `Gui ${CONFIG.recipient}, nhung dieu tot dep nhat`;
+    }
+
+    Object.values(editFields).forEach((field) => field.addEventListener("input", refreshGreeting));
+    document.getElementById("apply-editor").addEventListener("click", () => {
+      refreshGreeting();
+      document.getElementById("status-message").textContent = "Da ap dung loi chuc moi ngay tren thiep. Nho tai file HTML de luu lai nhe! ✨";
+      document.getElementById("editor-panel").open = false;
+    });
+
+    document.getElementById("reset-editor").addEventListener("click", () => {
+      Object.assign(CONFIG, ORIGINAL_CONFIG);
+      populateEditorFields();
+      refreshGreeting();
+      document.getElementById("status-message").textContent = "Da khoi phuc loi chuc ban dau.";
+    });
+
+    document.getElementById("download-edited-html").addEventListener("click", () => {
+      refreshGreeting();
+      const source = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+      const configJson = JSON.stringify(CONFIG, null, 2).replace(/</g, "\\u003c");
+      const configSource = "const CONFIG = " + configJson + ";";
+      const updatedSource = source.replace(/const CONFIG = \{[\s\S]*?\n    \};/, configSource);
+      if (updatedSource === source) {
+        document.getElementById("status-message").textContent = "Chua tao duoc file. Hay thu tai lai trang roi thao tac lan nua.";
+        return;
+      }
+      const blob = new Blob([updatedSource], { type: "text/html;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "thiep-sinh-nhat-ngoc-han.html";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+      document.getElementById("status-message").textContent = "Da tai file thiep HTML voi loi chuc moi. Mo file de kiem tra hoac dang file nay len mang nhe!";
+    });
+
+    populateEditorFields();
+
+    // --- Nhac Happy Birthday: giai dieu duoc tong hop tai cho ---
+    const tune = [
+      // Happy birthday to you
+      [["G4", .30], ["G4", .30], ["A4", .48], ["G4", .48], ["C5", .48], ["B4", .78]],
+      // Happy birthday to you
+      [["G4", .30], ["G4", .30], ["A4", .48], ["G4", .48], ["D5", .48], ["C5", .78]],
+      // Happy birthday dear ...
+      [["G4", .30], ["G4", .30], ["G5", .48], ["E5", .48], ["C5", .48], ["B4", .48], ["A4", .82]],
+      // Happy birthday to you
+      [["F5", .30], ["F5", .30], ["E5", .48], ["C5", .48], ["D5", .48], ["C5", 1.00]]
+    ];
+    const NOTE_HZ = { C4:261.63, D4:293.66, E4:329.63, F4:349.23, G4:392.00, A4:440.00, B4:493.88, C5:523.25, D5:587.33, E5:659.25, F5:698.46, G5:783.99 };
+    const musicButton = document.getElementById("music-button");
+    const musicLabel = document.getElementById("music-label");
+    const musicSymbol = document.getElementById("music-symbol");
+    const statusMessage = document.getElementById("status-message");
+    const volumeSlider = document.getElementById("volume");
+    let audioContext = null;
+    let masterGain = null;
+    let musicPlaying = false;
+    let scheduledTimers = [];
+    let activeOscillators = new Set();
+
+    function ensureAudio() {
+      if (!audioContext) {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) throw new Error("Trinh duyet nay chua ho tro Web Audio API.");
+        audioContext = new AudioCtx();
+        masterGain = audioContext.createGain();
+        masterGain.gain.value = 0;
+        masterGain.connect(audioContext.destination);
+      }
+      return audioContext.resume();
+    }
+
+    function playTone(frequency, duration) {
+      if (!audioContext || !masterGain || !musicPlaying) return;
+      const start = audioContext.currentTime;
+      const osc = audioContext.createOscillator();
+      const noteGain = audioContext.createGain();
+      osc.type = "triangle";
+      osc.frequency.setValueAtTime(frequency, start);
+      noteGain.gain.setValueAtTime(0.0001, start);
+      noteGain.gain.exponentialRampToValueAtTime(0.16, start + 0.025);
+      noteGain.gain.setValueAtTime(0.12, start + Math.max(0.04, duration * 0.62));
+      noteGain.gain.exponentialRampToValueAtTime(0.0001, start + duration + 0.13);
+      osc.connect(noteGain);
+      noteGain.connect(masterGain);
+      activeOscillators.add(osc);
+      osc.onended = () => { activeOscillators.delete(osc); try { osc.disconnect(); noteGain.disconnect(); } catch (_) {} };
+      osc.start(start);
+      osc.stop(start + duration + 0.15);
+    }
+
+    function playTuneOnce() {
+      if (!musicPlaying) return;
+      let offset = 0;
+      const gapBetweenLines = 320;
+      tune.forEach((line) => {
+        line.forEach(([note, duration]) => {
+          const delay = offset;
+          const timer = window.setTimeout(() => {
+            if (musicPlaying) playTone(NOTE_HZ[note], duration);
+          }, delay);
+          scheduledTimers.push(timer);
+          offset += duration * 1000;
+        });
+        offset += gapBetweenLines;
+      });
+      const loopTimer = window.setTimeout(() => {
+        scheduledTimers = [];
+        if (musicPlaying) playTuneOnce();
+      }, offset + 500);
+      scheduledTimers.push(loopTimer);
+    }
+
+    function updateMusicUi(isPlaying) {
+      musicButton.setAttribute("aria-pressed", isPlaying ? "true" : "false");
+      musicLabel.textContent = isPlaying ? "Tat nhac" : "Bat nhac Happy Birthday";
+      musicSymbol.textContent = isPlaying ? "Ⅱ" : "♫";
+    }
+
+    async function startMusic({ automatic = false } = {}) {
+      if (musicPlaying) return true;
+      try {
+        const resumePromise = ensureAudio();
+        if (automatic) {
+          // Tu thu phat khi mo trang; khong cho vo han neu trinh duyet chan autoplay.
+          await Promise.race([
+            resumePromise,
+            new Promise(resolve => window.setTimeout(resolve, 900))
+          ]);
+          if (!audioContext || audioContext.state !== "running") {
+            statusMessage.textContent = "Thiep da thu tu bat nhac. Neu chua nghe thay, hay cham mot lan vao man hinh de phat Happy Birthday.";
+            return false;
+          }
+        } else {
+          await resumePromise;
+          if (!audioContext || audioContext.state !== "running") {
+            throw new Error("Trinh duyet dang chan nhac. Hay cham vao man hinh roi thu lai.");
+          }
+        }
+        musicPlaying = true;
+        const vol = Number(volumeSlider.value) / 100;
+        masterGain.gain.setTargetAtTime(vol * 0.42, audioContext.currentTime, 0.12);
+        updateMusicUi(true);
+        statusMessage.textContent = "Nhac Happy Birthday dang phat ♫ Chuc Han co mot ngay that tuyet!";
+        playTuneOnce();
+        return true;
+      } catch (error) {
+        statusMessage.textContent = error.message || "Chua bat duoc nhac. Hay cham vao nut Bat nhac Happy Birthday.";
+        return false;
+      }
+    }
+
+    async function toggleMusic() {
+      if (musicPlaying) {
+        musicPlaying = false;
+        scheduledTimers.forEach(clearTimeout);
+        scheduledTimers = [];
+        activeOscillators.forEach((osc) => { try { osc.stop(); } catch (_) {} });
+        activeOscillators.clear();
+        if (masterGain && audioContext) masterGain.gain.setTargetAtTime(0, audioContext.currentTime, 0.04);
+        updateMusicUi(false);
+        statusMessage.textContent = "Da tat nhac. Cham nut Bat nhac Happy Birthday de nghe lai.";
+        return;
+      }
+      await startMusic({ automatic: false });
+    }
+
+    // Tu phat khi trang duoc mo/QR duoc quet. Neu trinh duyet cam autoplay,
+    // lan cham dau tien vao trang se thu bat nhac lai trong ngu canh nguoi dung.
+    window.setTimeout(() => { startMusic({ automatic: true }); }, 150);
+    window.addEventListener("pointerdown", (event) => {
+      if (musicPlaying) return;
+      if (event.target && event.target.closest && event.target.closest("#music-button")) return;
+      startMusic({ automatic: false });
+    }, { once: true, capture: true });
+
+    musicButton.addEventListener("click", toggleMusic);
+    volumeSlider.addEventListener("input", () => {
+      if (masterGain && audioContext && musicPlaying) {
+        masterGain.gain.setTargetAtTime((Number(volumeSlider.value) / 100) * 0.42, audioContext.currentTime, 0.05);
+      }
+    });
+
+    // --- Phao giay: canvas tu ve, khong can thu vien ben ngoai ---
+    const canvas = document.getElementById("confetti");
+    const ctx = canvas.getContext("2d");
+    let particles = [];
+    let animationFrame = null;
+    let lastFrame = 0;
+
+    function resizeCanvas() {
+      const dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+      canvas.width = Math.floor(window.innerWidth * dpr);
+      canvas.height = Math.floor(window.innerHeight * dpr);
+      canvas.style.width = `${window.innerWidth}px`;
+      canvas.style.height = `${window.innerHeight}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    function burstConfetti(count = 120, originX = window.innerWidth / 2, originY = window.innerHeight * .42) {
+      const colors = ["#ffd993", "#ff8fab", "#b9a6ff", "#fff1c9", "#8ee7d4", "#ffffff"];
+      for (let i = 0; i < count; i++) {
+        const angle = (Math.random() * Math.PI * 2);
+        const speed = 2 + Math.random() * 6;
+        particles.push({
+          x: originX, y: originY,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed - (Math.random() * 2),
+          gravity: .055 + Math.random() * .09,
+          size: 2 + Math.random() * 4,
+          rotation: Math.random() * Math.PI,
+          spin: (Math.random() - .5) * .2,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          life: 95 + Math.random() * 65,
+          maxLife: 160,
+          shape: Math.random() > .35 ? "rect" : "circle"
+        });
+      }
+      if (!animationFrame) {
+        lastFrame = performance.now();
+        animationFrame = requestAnimationFrame(drawConfetti);
+      }
+    }
+
+    function drawConfetti(now) {
+      const dt = Math.min(2, (now - lastFrame) / 16.67 || 1);
+      lastFrame = now;
+      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+      particles = particles.filter(p => p.life > 0 && p.y < window.innerHeight + 30);
+      particles.forEach(p => {
+        p.vy += p.gravity * dt;
+        p.x += p.vx * dt;
+        p.y += p.vy * dt;
+        p.rotation += p.spin * dt;
+        p.life -= dt;
+        ctx.save();
+        ctx.globalAlpha = Math.max(0, Math.min(1, p.life / 35));
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rotation);
+        ctx.fillStyle = p.color;
+        if (p.shape === "rect") ctx.fillRect(-p.size, -p.size * .55, p.size * 2.1, p.size * 1.15);
+        else { ctx.beginPath(); ctx.arc(0, 0, p.size * .7, 0, Math.PI * 2); ctx.fill(); }
+        ctx.restore();
+      });
+      if (particles.length) animationFrame = requestAnimationFrame(drawConfetti);
+      else { cancelAnimationFrame(animationFrame); animationFrame = null; ctx.clearRect(0, 0, window.innerWidth, window.innerHeight); }
+    }
+
+    document.getElementById("fireworks-button").addEventListener("click", () => {
+      burstConfetti(190, window.innerWidth * (.25 + Math.random() * .5), window.innerHeight * (.2 + Math.random() * .38));
+      window.setTimeout(() => burstConfetti(100, window.innerWidth * (.2 + Math.random() * .6), window.innerHeight * .3), 350);
+      statusMessage.textContent = "Phao hoa danh rieng cho Han! ✨";
+    });
+
+    const flame = document.getElementById("candle-flame");
+    let candleBlown = false;
+    document.getElementById("wish-button").addEventListener("click", () => {
+      if (!candleBlown) {
+        flame.classList.add("out");
+        candleBlown = true;
+        document.getElementById("cake-instruction").textContent = "Dieu uoc dang bay den vu tru ✨";
+        statusMessage.textContent = "Nen da tat! Hay giu dieu uoc that dep trong tim nhe.";
+        burstConfetti(150, window.innerWidth * .72, window.innerHeight * .48);
+      } else {
+        flame.classList.remove("out");
+        candleBlown = false;
+        document.getElementById("cake-instruction").textContent = "Hay uoc mot dieu · Thoi nen";
+        statusMessage.textContent = "Nen da duoc thap lai. Han co the uoc them mot dieu nua!";
+        burstConfetti(65, window.innerWidth * .72, window.innerHeight * .48);
+      }
+    });
+
+    // Phao giay nhe khi trang mo; phan hoat hinh van chay neu khong bat nhac.
+    window.setTimeout(() => burstConfetti(85, window.innerWidth * .72, window.innerHeight * .34), 900);
+  </script>
+</body>
+</html>
